@@ -28,16 +28,7 @@ ps -o state= -o comm= -t '#{pane_tty}' \
 ```
 My implementation of `is_vim`:
 ```sh
-[ "$(basename "$(tmux display -p '#{pane_current_command}')")" = vim ]
-```
-The following could also work:
-```sh
-[ "$(tmux display -p '#{pane_current_command}')" = vim ]
-```
-However basename barely adds any overhead and makes the solution more portable. If you wish to add support for vi as well you could use the following solution:
-```sh
-cmd="$(basename "$(tmux display -p '#{pane_current_command}')")"
-[ "${cmd%m}" = vi ]
+tmux display -p | grep -q '[0-9]*:vi.'
 ```
 
 I've also cut some of the """features""" from the vim plugin. If you wish to remap your keys, simply bind something to `:TmuxNavigateUp` `:TmuxNavigateDown` etc.
@@ -97,7 +88,7 @@ Add the following to your `~/.tmux.conf` file:
 ``` tmux
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/depsterr/vim-tmux-navigator
-is_vim="[ \"$(basename \"$(tmux display -p '#{pane_current_command}')\")\" = vim ]"
+is_vim="tmux display -p | grep -q '[0-9]*:vi.'"
 bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
 bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j'  'select-pane -D'
 bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k'  'select-pane -U'
