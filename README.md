@@ -102,7 +102,7 @@ bind-key -T copy-mode-vi 'C-l' select-pane -R
 
 #### TPM
 
-If you'd prefer, you can use the Tmux Plugin Manager ([TPM][]) instead of
+If you'd prefer, you can use the Tmux Plugin Manager ([TPM](https://github.com/tmux-plugins/tpm)) instead of
 copying the snippet.
 When using TPM, add the following lines to your ~/.tmux.conf:
 
@@ -111,7 +111,7 @@ set -g @plugin 'depsterr/vim-tmux-navigator'
 run '~/.tmux/plugins/tpm/tpm'
 ```
 
-Why don't you support X?
+Why don't you support this thing?
 ------------------------
 
-Cause I don't use it. Edit the source or go make a fork.
+Cause I don't use that thing. Edit the source or go make a fork.
