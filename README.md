@@ -53,7 +53,7 @@ Installation
 
 ### Vim
 
-If you don't have a preferred installation method, I recommend using [Vundle][].
+If you don't have a preferred installation method, I recommend using [Vundle](https://github.com/VundleVim/Vundle.vim).
 Assuming you have Vundle installed and configured, the following steps will
 install the plugin:
 
